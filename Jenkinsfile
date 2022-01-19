@@ -38,7 +38,7 @@ pipeline {
             steps {
                 sh "echo 'deploying with helm'"
                 sh "helm init --upgrade"
-                sh "helm install indiana ./indiana-game-app"
+                sh "helm install indiana ./indiana-game-app/Chart.yaml"
             }
         }
     }
