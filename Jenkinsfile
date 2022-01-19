@@ -37,7 +37,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh "echo 'deploying with helm'"
-                sh "helm init"
+                sh "helm init --upgrade"
                 sh "helm install ./indiana-game-app"
             }
         }
