@@ -3,8 +3,30 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
+                sh "echo updating apt"
+                sh "apt-get update"
+                sh "echo installing zip"
+                sh "apt install zip"
                 sh "echo 'pulling'"
                 sh "git pull"
+                sh "installing the aws cli"
+                sh "curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'"
+                sh "unzip awscliv2.zip"
+                sh "./aws/install"
+                sh "configuring aws cli"
+                sh "aws configure set aws_access_key_id AKIA4WJYQSNFJRL3KQEE"
+                sh "aws configure set aws_secret_access_key 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"
+                sh "aws configure set region eu-central-1"
+                sh "aws configure set output json"
+                sh "echo 'installing eksctl'"
+                sh "curl --silent --location 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz' | tar xz -C /tmp"
+                sh "mv /tmp/eksctl /usr/local/bin"
+                sh "echo 'connecting the eksctl to cluster'"
+                sh "aws eks update-kubeconfig --name basic-cluster --region eu-central-1"
+                sh "echo 'installing helm'"
+                sh "curl -LO https://git.io/get_helm.sh"
+                sh "chmod 700 get_helm.sh"
+                sh "./get_helm.sh"
             }
         }
         stage('Test'){
@@ -14,6 +36,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh "echo 'deploying with helm'"
                 sh "helm install ./indiana-game-app"
             }
         }
