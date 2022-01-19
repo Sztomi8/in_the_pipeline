@@ -1,0 +1,7 @@
+indiana:
+  deploymentName: indiana-deployment
+  appName: indiana
+  serviceName: indiana-service
+  replicaNumber: 1
+  containerPort: 8000
+  image: 872533758794.dkr.ecr.eu-central-1.amazonaws.com/indi-expose:latest

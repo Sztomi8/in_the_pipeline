@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.indiana.deploymentName }}
+  labels:
+    app: {{ .Values.indiana.appName }}
+spec:
+  replicas: {{ .Values.indiana.replicaNumber }}
+  selector:
+    matchLabels:
+      app: {{ .Values.indiana.appName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.indiana.appName }}
+    spec:
+      containers:
+        - name: {{ .Values.indiana.appName }}
+          image: {{ .Values.indiana.image }}
+          ports:
+            - containerPort: {{ .Values.indiana.containerPort }}
