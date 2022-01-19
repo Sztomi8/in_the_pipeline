@@ -19,7 +19,7 @@ pipeline {
                 sh "aws configure set region eu-central-1"
                 sh "aws configure set output json"
                 sh "echo 'installing eksctl'"
-                sh "curl --silent --location 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz' | tar xz -C /tmp"
+                sh "curl --silent --location 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz' | tar xz -C /tmp"
                 sh "mv /tmp/eksctl /usr/local/bin"
                 sh "echo 'connecting the eksctl to cluster'"
                 sh "aws eks update-kubeconfig --name basic-cluster --region eu-central-1"
