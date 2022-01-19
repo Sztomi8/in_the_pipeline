@@ -12,7 +12,7 @@ pipeline {
                 sh "echo 'installing the aws cli'"
                 sh "curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'"
                 sh "unzip awscliv2.zip"
-                sh "./aws/install"
+                sh "./aws/install --update"
                 sh "echo 'configuring aws cli'"
                 sh "aws configure set aws_access_key_id AKIA4WJYQSNFGSU76VNA"
                 sh "aws configure set aws_secret_access_key 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"
