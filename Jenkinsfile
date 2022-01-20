@@ -16,6 +16,9 @@ pipeline {
                 usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     AWS("eks update-kubeconfig --name ridiculous-unicorn-1642607251 --region eu-central-1")
                     }
+                sh "echo 'installing eksctl'"
+                sh "curl --silent --location 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz' | tar xz -C /tmp"
+                sh "mv /tmp/eksctl /usr/local/bin"
                 sh "echo 'installing helm'"
                 sh "curl -LO https://git.io/get_helm.sh"
                 sh "chmod 700 get_helm.sh"
