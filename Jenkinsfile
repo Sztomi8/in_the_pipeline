@@ -20,7 +20,7 @@ pipeline {
                 sh "curl --silent --location 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz' | tar xz -C /tmp"
                 sh "mv /tmp/eksctl /usr/local/bin"
                 sh "echo 'installing helm'"
-                sh "curl -LO https://git.io/get_helm.sh"
+                sh "curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3"
                 sh "chmod 700 get_helm.sh"
                 sh "./get_helm.sh"
             }
@@ -33,8 +33,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh "echo 'deploying with helm'"
-                sh "helm init --debug"
-                sh "helm install indiana ./indiana-game-app/Chart.yaml"
+                sh "helm init"
+                sh "helm install ./indiana-game-app --namespace indiana --generate-name"
             }
         }
     }
