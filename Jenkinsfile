@@ -14,7 +14,7 @@ pipeline {
                 sh "echo 'configuring aws cli'"
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws_key', 
                 usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                    AWS("eks update-kubeconfig --name basic cluster --region eu-central-1")
+                    AWS("eks update-kubeconfig --name ridiculous-unicorn-1642607251 --region eu-central-1")
                     }
                 sh "echo 'installing helm'"
                 sh "curl -LO https://git.io/get_helm.sh"
