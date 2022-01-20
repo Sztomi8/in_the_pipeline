@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh "echo 'deploying with helm'"
-                sh "helm init"
+                sh "helm init --debug"
                 sh "helm install indiana ./indiana-game-app/Chart.yaml"
             }
         }
