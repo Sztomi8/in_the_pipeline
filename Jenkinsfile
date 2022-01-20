@@ -11,10 +11,6 @@ pipeline {
                 sh "apt install zip"
                 sh "echo 'pulling'"
                 sh "git pull"
-                sh "echo 'installing the aws cli'"
-                sh "curl 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip' -o 'awscliv2.zip'"
-                sh "unzip awscliv2.zip"
-                sh "./aws/install --update"
                 sh "echo 'configuring aws cli'"
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws_key', 
                 usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
