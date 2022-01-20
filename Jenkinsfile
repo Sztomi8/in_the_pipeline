@@ -33,7 +33,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh "echo 'deploying with helm'"
-                sh "helm init"
                 sh "helm install ./indiana-game-app --namespace indiana --generate-name"
             }
         }
