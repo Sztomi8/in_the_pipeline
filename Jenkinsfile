@@ -14,7 +14,7 @@ pipeline {
                 sh "echo 'configuring aws cli'"
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'aws_key', 
                 usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-                    AWS("eks update-kubeconfig --name ridiculous-unicorn-1642607251 --region eu-central-1")
+                    AWS("eks update-kubeconfig --name even-more-ridiculous-unicorn --region eu-central-1")
                     }
                 sh "echo 'installing eksctl'"
                 sh "curl --silent --location 'https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz' | tar xz -C /tmp"
