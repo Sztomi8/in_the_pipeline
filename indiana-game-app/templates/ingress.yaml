@@ -3,11 +3,15 @@ kind: Ingress
 metadata:
   name: indiana-ingress
   namespace: indiana
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: indiana-test.com
+  - host: indiana-huha-test.com
     http:
       paths:
-      - backend:
+      - path: /
+        pathType: Prefix
+        backend:
           serviceName: {{ .Values.indiana.serviceName }}
           servicePort: 8000
